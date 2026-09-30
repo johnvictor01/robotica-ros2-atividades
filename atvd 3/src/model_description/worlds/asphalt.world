@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="tri_x_asphalt">
+    <gravity>0 0 -9.81</gravity>
+    <physics name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.42 0.45 0.50 1</ambient>
+      <background>0.70 0.78 0.88 1</background>
+      <shadows>true</shadows>
+      <grid>false</grid>
+    </scene>
+    <include><uri>model://sun</uri></include>
+
+    <!-- Asfalto texturizado com os materiais que acompanham o Gazebo Classic. -->
+    <model name="asphalt_ground">
+      <static>true</static>
+      <link name="ground_link">
+        <collision name="ground_collision">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <surface><friction><ode><mu>1.5</mu><mu2>1.5</mu2></ode></friction></surface>
+        </collision>
+        <visual name="asphalt_visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Road</name>
+            </script>
+            <ambient>0.75 0.75 0.75 1</ambient>
+            <diffuse>0.75 0.75 0.75 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Centro do waypoint e anel pontilhado: o controlador troca de alvo a 0.10 m. -->
+    <model name="mission_waypoint_guides">
+      <static>true</static>
+      <link name="ground_markers">
+        <visual name="waypoint_1">
+          <pose>5 0 0.018 0 0 0</pose>
+          <geometry><cylinder><radius>0.045</radius><length>0.025</length></cylinder></geometry>
+          <material><ambient>1 0.8 0 1</ambient><diffuse>1 0.8 0 1</diffuse><emissive>0.75 0.48 0 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_1">
+          <pose>5.10000 0.00000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_2">
+          <pose>5.09239 0.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_3">
+          <pose>5.07071 0.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_4">
+          <pose>5.03827 0.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_5">
+          <pose>5.00000 0.10000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_6">
+          <pose>4.96173 0.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_7">
+          <pose>4.92929 0.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_8">
+          <pose>4.90761 0.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_9">
+          <pose>4.90000 0.00000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_10">
+          <pose>4.90761 -0.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_11">
+          <pose>4.92929 -0.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_12">
+          <pose>4.96173 -0.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_13">
+          <pose>5.00000 -0.10000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_14">
+          <pose>5.03827 -0.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_15">
+          <pose>5.07071 -0.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_1_radius_dot_16">
+          <pose>5.09239 -0.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2">
+          <pose>5 5 0.018 0 0 0</pose>
+          <geometry><cylinder><radius>0.045</radius><length>0.025</length></cylinder></geometry>
+          <material><ambient>1 0.8 0 1</ambient><diffuse>1 0.8 0 1</diffuse><emissive>0.75 0.48 0 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_1">
+          <pose>5.10000 5.00000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_2">
+          <pose>5.09239 5.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_3">
+          <pose>5.07071 5.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_4">
+          <pose>5.03827 5.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_5">
+          <pose>5.00000 5.10000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_6">
+          <pose>4.96173 5.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_7">
+          <pose>4.92929 5.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_8">
+          <pose>4.90761 5.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_9">
+          <pose>4.90000 5.00000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_10">
+          <pose>4.90761 4.96173 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_11">
+          <pose>4.92929 4.92929 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_12">
+          <pose>4.96173 4.90761 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_13">
+          <pose>5.00000 4.90000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_14">
+          <pose>5.03827 4.90761 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_15">
+          <pose>5.07071 4.92929 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_2_radius_dot_16">
+          <pose>5.09239 4.96173 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3">
+          <pose>0 5 0.018 0 0 0</pose>
+          <geometry><cylinder><radius>0.045</radius><length>0.025</length></cylinder></geometry>
+          <material><ambient>1 0.8 0 1</ambient><diffuse>1 0.8 0 1</diffuse><emissive>0.75 0.48 0 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_1">
+          <pose>0.10000 5.00000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_2">
+          <pose>0.09239 5.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_3">
+          <pose>0.07071 5.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_4">
+          <pose>0.03827 5.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_5">
+          <pose>0.00000 5.10000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_6">
+          <pose>-0.03827 5.09239 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_7">
+          <pose>-0.07071 5.07071 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_8">
+          <pose>-0.09239 5.03827 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_9">
+          <pose>-0.10000 5.00000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_10">
+          <pose>-0.09239 4.96173 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_11">
+          <pose>-0.07071 4.92929 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_12">
+          <pose>-0.03827 4.90761 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_13">
+          <pose>-0.00000 4.90000 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_14">
+          <pose>0.03827 4.90761 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_15">
+          <pose>0.07071 4.92929 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+        <visual name="waypoint_3_radius_dot_16">
+          <pose>0.09239 4.96173 0.014 0 0 0</pose>
+          <geometry><cylinder><radius>0.012</radius><length>0.018</length></cylinder></geometry>
+          <material><ambient>0.1 1 0.1 1</ambient><diffuse>0.1 1 0.1 1</diffuse><emissive>0.05 0.65 0.05 1</emissive></material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

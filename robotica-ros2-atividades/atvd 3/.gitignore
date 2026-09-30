@@ -1,0 +1,17 @@
+# ROS 2 / colcon generated files
+/build/
+/install/
+/log/
+
+# Local simulation data
+/rosbag2_*/
+*.bag
+
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,36 @@
+trajectory_controller:
+  ros__parameters:
+    mode: mission             # pose | mission | figure8
+    pose_method: continuous       # continuous | three_maneuvers
+    loop_mission: true        # reinicia no primeiro waypoint ao chegar no ultimo
+    waypoint_radius: 0.10     # avanca ao proximo waypoint a 10 cm do centro
+    tracking_mode: feedback   # open_loop | feedback
+    kff: 1.0
+
+    # Trajetoria dos slides: x=A sin(Omega t), y=B sin(2 Omega t)
+    A: 2.0
+    B: 4.0
+    omega: 0.09
+
+    # PID da biblioteca control_toolbox, aplicado aos erros de pose.
+    linear_kp: 0.8
+    linear_ki: 0.0
+    linear_kd: 0.02
+    heading_kp: 2.4
+    heading_ki: 0.0
+    heading_kd: 0.04
+    lateral_kp: 1.8
+    lateral_ki: 0.0
+    lateral_kd: 0.02
+    integral_limit: 0.5
+
+    max_linear_speed: 0.75
+    max_angular_speed: 1.5
+    position_tolerance: 0.04
+    heading_tolerance: 0.10
+
+    # Pelo menos tres waypoints (x, y, theta), em metros e radianos.
+    waypoint_x: [5.0, 5.0, 0.0]
+    waypoint_y: [0.0, 5.0, 5.0]
+    waypoint_theta: [0.0, 1.5707963, 3.1415926]
+    waypoint_dwell: [0.0, 0.0, 0.0]

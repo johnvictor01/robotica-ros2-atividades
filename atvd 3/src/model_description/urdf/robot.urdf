@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="tri_x" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <material name="body_blue"><color rgba="0.035 0.19 0.48 1"/></material>
+  <material name="glass"><color rgba="0.018 0.035 0.055 1"/></material>
+  <material name="tire"><color rgba="0.025 0.03 0.04 1"/></material>
+  <material name="rim"><color rgba="0.68 0.76 0.82 1"/></material>
+  <material name="accent"><color rgba="0.95 0.25 0.035 1"/></material>
+  <material name="headlight"><color rgba="0.65 0.92 1 1"/></material>
+  <material name="taillight"><color rgba="1 0.025 0.015 1"/></material>
+
+  <link name="base_footprint"/>
+  <link name="base_link">
+    <visual name="sports_car_shell"><geometry><mesh filename="package://model_description/meshes/sports_body.stl"/></geometry><material name="body_blue"/></visual>
+    <visual name="hood_stripe_left"><origin xyz="0.30 0.075 0.142"/><geometry><box size="0.25 0.012 0.004"/></geometry><material name="accent"/></visual>
+    <visual name="hood_stripe_right"><origin xyz="0.30 -0.075 0.142"/><geometry><box size="0.25 0.012 0.004"/></geometry><material name="accent"/></visual>
+    <visual name="front_light_left"><origin xyz="0.443 0.105 0.148" rpy="0 0.08 0"/><geometry><box size="0.055 0.045 0.012"/></geometry><material name="headlight"/></visual>
+    <visual name="front_light_right"><origin xyz="0.443 -0.105 0.148" rpy="0 -0.08 0"/><geometry><box size="0.055 0.045 0.012"/></geometry><material name="headlight"/></visual>
+    <visual name="rear_light_left"><origin xyz="-0.37 0.11 0.17"/><geometry><box size="0.035 0.055 0.014"/></geometry><material name="taillight"/></visual>
+    <visual name="rear_light_right"><origin xyz="-0.37 -0.11 0.17"/><geometry><box size="0.035 0.055 0.014"/></geometry><material name="taillight"/></visual>
+    <collision><origin xyz="0.015 0 0.105"/><geometry><box size="0.72 0.39 0.14"/></geometry></collision>
+    <inertial><origin xyz="0 0 0.12"/><mass value="6.0"/><inertia ixx="0.10" ixy="0" ixz="0" iyy="0.24" iyz="0" izz="0.31"/></inertial>
+  </link>
+  <joint name="base_footprint_joint" type="fixed"><parent link="base_footprint"/><child link="base_link"/><origin xyz="0 0 0.10"/></joint>
+
+  <link name="canopy_link">
+    <visual><geometry><mesh filename="package://model_description/meshes/sports_canopy.stl"/></geometry></visual>
+    <inertial><mass value="0.08"/><inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/></inertial>
+  </link>
+  <joint name="canopy_mount" type="fixed"><parent link="base_link"/><child link="canopy_link"/><origin xyz="0 0 0"/></joint>
+
+  <!-- Par de rodas motrizes dianteiras: mantém o diff_drive_controller da atividade. -->
+  <link name="left_wheel">
+    <visual name="tire"><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.10" length="0.065"/></geometry><material name="tire"/></visual>
+    <collision><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.10" length="0.065"/></geometry></collision>
+    <inertial><mass value="0.48"/><inertia ixx="0.00255" ixy="0" ixz="0" iyy="0.00240" iyz="0" izz="0.00255"/></inertial>
+  </link>
+  <joint name="left_wheel_joint" type="continuous"><parent link="base_link"/><child link="left_wheel"/><origin xyz="0.14 0.31 0"/><axis xyz="0 1 0"/><dynamics damping="0.02" friction="0.01"/></joint>
+  <link name="left_rim"><visual><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.062" length="0.006"/></geometry></visual></link>
+  <joint name="left_rim_mount" type="fixed"><parent link="left_wheel"/><child link="left_rim"/><origin xyz="0 0.034 0"/></joint>
+
+  <link name="right_wheel">
+    <visual name="tire"><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.10" length="0.065"/></geometry><material name="tire"/></visual>
+    <collision><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.10" length="0.065"/></geometry></collision>
+    <inertial><mass value="0.48"/><inertia ixx="0.00255" ixy="0" ixz="0" iyy="0.00240" iyz="0" izz="0.00255"/></inertial>
+  </link>
+  <joint name="right_wheel_joint" type="continuous"><parent link="base_link"/><child link="right_wheel"/><origin xyz="0.14 -0.31 0"/><axis xyz="0 1 0"/><dynamics damping="0.02" friction="0.01"/></joint>
+  <link name="right_rim"><visual><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.062" length="0.006"/></geometry></visual></link>
+  <joint name="right_rim_mount" type="fixed"><parent link="right_wheel"/><child link="right_rim"/><origin xyz="0 -0.034 0"/></joint>
+
+  <!-- Terceira roda traseira visualmente completa; esfera com pouco atrito funciona como caster. -->
+  <link name="rear_wheel">
+    <visual name="tire"><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.10" length="0.058"/></geometry><material name="tire"/></visual>
+    <collision><geometry><sphere radius="0.10"/></geometry></collision>
+    <inertial><mass value="0.12"/><inertia ixx="0.00048" ixy="0" ixz="0" iyy="0.00048" iyz="0" izz="0.00048"/></inertial>
+  </link>
+  <joint name="rear_wheel_joint" type="fixed"><parent link="base_link"/><child link="rear_wheel"/><origin xyz="-0.31 0 0"/></joint>
+  <link name="rear_rim"><visual><origin rpy="1.5707963 0 0"/><geometry><cylinder radius="0.060" length="0.006"/></geometry></visual></link>
+  <joint name="rear_rim_mount" type="fixed"><parent link="rear_wheel"/><child link="rear_rim"/><origin xyz="0 -0.030 0"/></joint>
+
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware><plugin>gazebo_ros2_control/GazeboSystem</plugin></hardware>
+    <joint name="left_wheel_joint"><command_interface name="velocity"><param name="min">-20</param><param name="max">20</param></command_interface><state_interface name="position"/><state_interface name="velocity"/></joint>
+    <joint name="right_wheel_joint"><command_interface name="velocity"><param name="min">-20</param><param name="max">20</param></command_interface><state_interface name="position"/><state_interface name="velocity"/></joint>
+  </ros2_control>
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so"><parameters>$(find model_description)/config/controllers.yaml</parameters></plugin>
+  </gazebo>
+  <gazebo reference="left_wheel"><mu1>1.8</mu1><mu2>1.8</mu2></gazebo>
+  <gazebo reference="right_wheel"><mu1>1.8</mu1><mu2>1.8</mu2></gazebo>
+  <gazebo reference="rear_wheel"><mu1>0.02</mu1><mu2>0.02</mu2></gazebo>
+  <gazebo reference="base_link"><material>Gazebo/Blue</material></gazebo>
+  <gazebo reference="canopy_link"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="left_wheel"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="right_wheel"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="rear_wheel"><material>Gazebo/Black</material></gazebo>
+  <gazebo reference="left_rim"><material>Gazebo/Grey</material></gazebo>
+  <gazebo reference="right_rim"><material>Gazebo/Grey</material></gazebo>
+  <gazebo reference="rear_rim"><material>Gazebo/Grey</material></gazebo>
+</robot>

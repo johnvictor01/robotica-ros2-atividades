@@ -1,0 +1,14 @@
+# Build output created by each independent colcon workspace
+**/build/
+**/install/
+**/log/
+
+# Local simulation recordings and generated Python files
+**/rosbag2_*/
+**/__pycache__/
+*.py[cod]
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
